@@ -1,4 +1,24 @@
 export const getPosts = () => ({
+  devices: [
+    {
+      id: "device-1",
+      author: "user-1",
+      title: "Device 1",
+      connectionState: "DISCONNECTED"
+    },
+    {
+      id: "device-2",
+      author: "user-1",
+      title: "Device 2",
+      connectionState: "DISCONNECTED"
+    },
+    {
+      id: "device-3",
+      author: "user-1",
+      title: "Device 3",
+      connectionState: "DISCONNECTED"
+    }
+  ],
   posts: [
     { id: "post-1", author: "user-1", title: "Post 1" },
     { id: "post-2", author: "user-2", title: "Post 2" },
