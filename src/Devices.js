@@ -29,10 +29,13 @@ const getDeviceListing = createSelector(
   (devices, users, listing) => {
     //console.log(devices);
     //console.log(listing);
-    return listing.map((id) => {
+    let objDevices = listing.map((id) => {
       const device = devices[id];
       return { ...device, user: users[device.author] };
     });
+    //console.log(objDevices);
+
+    return objDevices;
   }
 );
 

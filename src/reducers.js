@@ -73,7 +73,7 @@ export const devicesByIdReducer = (state = {}, action) => {
       //   newState[device.id] = device;
       // });
 
-      return state;
+      return newState;
     default:
       return state;
   }

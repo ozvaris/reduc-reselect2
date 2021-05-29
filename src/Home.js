@@ -104,9 +104,10 @@ const Home = (props) => {
         <FlexItemLeft>
           <Button onClick={() => props.receivePosts()}>Fetch Posts</Button>
           <Button onClick={() => props.setConnection()}>Set Connection</Button>
-          <Button onClick={() => console.log(props.devicesById)}>
+
+          {/* <Button onClick={() => console.log(props.devicesById)}>
             Log Devices
-          </Button>
+          </Button> */}
         </FlexItemLeft>
       </FlexBox>
       <FlexBox>
@@ -118,8 +119,8 @@ const Home = (props) => {
 
 const mapState = (state) => {
   return {
-    usersById: state.usersById,
-    devicesById: state.devicesById
+    usersById: state.usersById
+    //devicesById: state.devicesById
   };
 };
 
