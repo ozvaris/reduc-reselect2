@@ -5,7 +5,7 @@ import Devices from "./Devices";
 import Posts from "./Posts";
 import PostsByUser from "./PostsByUser";
 import Counter from "./Counter";
-import { receiveData, setConnection } from "./actions";
+import { receiveData, setConnection, updatePost } from "./actions";
 
 export const Button = styled.button`
   height: 25px;
@@ -104,7 +104,7 @@ const Home = (props) => {
         <FlexItemLeft>
           <Button onClick={() => props.receivePosts()}>Fetch Posts</Button>
           <Button onClick={() => props.setConnection()}>Set Connection</Button>
-
+          <Button onClick={() => props.updatePost()}>Update User Post</Button>
           {/* <Button onClick={() => console.log(props.devicesById)}>
             Log Devices
           </Button> */}
@@ -127,7 +127,8 @@ const mapState = (state) => {
 export function mapDispatchToProps(dispatch) {
   return {
     receivePosts: () => dispatch(receiveData()),
-    setConnection: () => dispatch(setConnection())
+    setConnection: () => dispatch(setConnection()),
+    updatePost: () => dispatch(updatePost())
   };
 }
 

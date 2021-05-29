@@ -9,6 +9,7 @@ export const usersByIdReducer = (state = {}, action) => {
         newState[user.id] = user;
       });
       return newState;
+
     default:
       return state;
   }
@@ -24,11 +25,19 @@ export const usersListingReducer = (state = {}, action) => {
 };
 
 export const postsByIdReducer = (state = {}, action) => {
+  const newState = { ...state };
   switch (action.type) {
     case "RECEIVE_DATA":
-      const newState = { ...state };
       action.payload.posts.forEach((post) => {
         newState[post.id] = post;
+      });
+      return newState;
+    case actionType.UPDATE_POST:
+      //console.log(state);
+      Object.keys(newState).forEach((key) => {
+        if (key === "post-1" && newState[key].author === "user-1") {
+          newState[key].title += "Updated";
+        }
       });
       return newState;
     default:
@@ -63,16 +72,6 @@ export const devicesByIdReducer = (state = {}, action) => {
               : "DISCONNECTED";
         }
       });
-      // newState.forEach((device) => {
-      //   if (device.id === "device-1") {
-      //     device.connectionState =
-      //       device.connectionState === "DISCONNECTED"
-      //         ? "CONNECTED"
-      //         : "DISCONNECTED";
-      //   }
-      //   newState[device.id] = device;
-      // });
-
       return newState;
     default:
       return state;

@@ -6,7 +6,7 @@ let count = 0;
 
 class Posts extends React.Component {
   render() {
-    console.log(`PostsByUser render ${++count}`);
+    console.log(`PostsByUser render ${++count} ${this.props.user}`);
     return (
       <div>
         <h3>Posts</h3>

@@ -8,6 +8,12 @@ export function receiveData(payload) {
   };
 }
 
+export function updatePost() {
+  return {
+    type: actionType.UPDATE_POST
+  };
+}
+
 export function setConnection() {
   return {
     type: actionType.SET_CONNECTION
