@@ -42,4 +42,4 @@ const mapState = () => {
   };
 };
 
-export default connect(mapState)(Posts);
+export default connect(mapState)(React.memo(Posts));

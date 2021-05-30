@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-reselect",
+  "name": "repo-redux-reselect2",
   "version": "1.0.0",
-  "description": "https://www.youtube.com/watch?v=6Xwo5mVxDqI https://github.com/brigand/react-scratch/tree/master/src/reselect-redux",
+  "description": "https://codesandbox.io/u/gojutin Reselect Redux",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Devices from "./Devices";
 import Posts from "./Posts";
 import PostsByUser from "./PostsByUser";
+import Auxilary from "./Auxilary";
 import Counter from "./Counter";
 import { receiveData, setConnection, updatePost } from "./actions";
 
@@ -82,10 +83,12 @@ const Home = (props) => {
           <Devices />
           <h2>Posts</h2>
           <Posts />
-          <h2>User 1</h2>
-          <PostsByUser user={"user-1"} />
-          <h2>User 2</h2>
-          <PostsByUser user={"user-2"} />
+          {Object.keys(props.usersById).map((user) => (
+            <Auxilary key={user}>
+              <h2>{user}</h2>
+              <PostsByUser key={user} user={user} />
+            </Auxilary>
+          ))}
         </div>
       );
     }
