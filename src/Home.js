@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { createSelector } from "reselect";
+import { connect, useSelector } from "react-redux";
 import styled from "styled-components";
 import Devices from "./Devices";
 import Posts from "./Posts";
@@ -74,8 +75,18 @@ const Home = (props) => {
     //props.receivePosts();
   }, []);
 
+  const UserPost = (props) => {
+    return (
+      <Auxilary>
+        <h2>{props.user}</h2>
+        <PostsByUser user={props.user} />
+      </Auxilary>
+    );
+  };
+
   const postList = () => {
     let viewPosts = null;
+
     if (props.usersById && Object.keys(props.usersById).length !== 0) {
       viewPosts = (
         <div>
@@ -84,10 +95,7 @@ const Home = (props) => {
           <h2>Posts</h2>
           <Posts />
           {Object.keys(props.usersById).map((user) => (
-            <Auxilary key={user}>
-              <h2>{user}</h2>
-              <PostsByUser key={user} user={user} />
-            </Auxilary>
+            <UserPost key={user} user={user} />
           ))}
         </div>
       );
@@ -121,11 +129,27 @@ const Home = (props) => {
 };
 
 const mapState = (state) => {
+  //const getPosts = makeGetPosts();
   return {
     usersById: state.usersById
     //devicesById: state.devicesById
   };
 };
+
+const makeGetPosts = () =>
+  createSelector(
+    (state, props) => props.user,
+    (state) => state.postsById,
+    (state) => state.usersById,
+    (state) => state.postListing,
+    (userId, posts, users, listing) =>
+      listing
+        .filter((id) => posts[id].author === userId)
+        .map((id) => {
+          const post = posts[id];
+          return { ...post, user: users[post.author] };
+        })
+  );
 
 export function mapDispatchToProps(dispatch) {
   return {

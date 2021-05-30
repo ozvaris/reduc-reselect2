@@ -7,16 +7,15 @@ let count = 0;
 class Posts extends React.Component {
   render() {
     console.log(`PostsByUser render ${++count} ${this.props.user}`);
-    return (
-      <div>
-        <h3>Posts</h3>
-        <ul>
-          {this.props.posts.map((x) => (
-            <li key={x.id}>{`${x.title} - ${x.user.first} ${x.user.last}`}</li>
-          ))}
-        </ul>
-      </div>
-    );
+    return null;
+    // <div>
+    //   <h3>Posts</h3>
+    //   <ul>
+    //     {this.props.posts.map((x) => (
+    //       <li key={x.id}>{`${x.title} - ${x.user.first} ${x.user.last}`}</li>
+    //     ))}
+    //   </ul>
+    // </div>
   }
 }
 
@@ -38,8 +37,8 @@ const makeGetPosts = () =>
 const mapState = () => {
   const getPosts = makeGetPosts();
   return (state, ownProps) => {
-    return { posts: getPosts(state, ownProps) };
+    return {};
   };
 };
 
-export default connect(mapState)(React.memo(Posts));
+export default connect(mapState)(Posts);
